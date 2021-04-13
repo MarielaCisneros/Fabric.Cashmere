@@ -30,7 +30,7 @@ This folder should contain the following files:
 
 * "component-name".module.ts - this file exports all the public properties of your component.
 
-- "component-name".scss - this will be used to style your component. For more on how to follow our styling conventions, [click here](http://localhost:4200/foundations/color)
+- "component-name".scss - this will be used to style your component. For more on how to follow our styling conventions, [click here](https://cashmere.healthcatalyst.net/web/guides/using-customizing-components?section=style-guidelines-for-new-components&selected=using-customizing-components)
 
 * "index".ts - this file exports all the public properties of your component.
 
