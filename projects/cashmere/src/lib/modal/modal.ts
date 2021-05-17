@@ -17,24 +17,24 @@ export class HcModal<T> {
     isDraggable?: boolean;
 
     /** Subscribe to result in order to get access to modal result values passed in ActiveModal.close() */
-    get result(): Observable<unknown> {
+    get result(): Observable<any> {
         return this._result.asObservable();
     }
 
-    private _result: Subject<unknown> = new Subject<unknown>();
+    private _result: Subject<any> = new Subject<any>();
 
     _removeOpenClass: (() => void) | null;
 
     _modalClose = new EventEmitter();
 
     /** Data that was passed in through ModalOptions */
-    data?: unknown;
+    data?: any;
 
     /** Closes the modal with a result.
      * Use this close method when opening a modal using a TemplateRef.
      * To close a modal that was created from a Component, inject ActiveModal and use the close method
      * on ActiveModal */
-    close(result?: unknown): void {
+    close(result?: any): void {
         this.removeModalElements();
         this._result.next(result);
     }

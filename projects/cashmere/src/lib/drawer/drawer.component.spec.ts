@@ -63,7 +63,7 @@ describe('DrawerComponent', () => {
             it('should be the set value', () => expect(component.opened).toBe(true));
         });
         describe('when setting to invalid value', () => {
-            const setInvalid = () => (component.opened = ('someInvalidValue' as unknown) as boolean);
+            const setInvalid = () => (component.opened = ('someInvalidValue' as any) as boolean);
             it('should throw an error', () => expect(setInvalid).toThrowError());
         });
     });

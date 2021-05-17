@@ -8,7 +8,7 @@ import {FormControl, FormsModule, ReactiveFormsModule, Validators} from '@angula
 import {By} from '@angular/platform-browser';
 
 describe('HcFormFieldComponent', () => {
-    let fixture: ComponentFixture<unknown>;
+    let fixture: ComponentFixture<any>;
 
     beforeEach(fakeAsync(() => {
         TestBed.configureTestingModule({

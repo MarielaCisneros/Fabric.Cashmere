@@ -9,7 +9,7 @@ export abstract class HcFormControlComponent {
 
     /** An object that represents the Angular validation errors that are present on the form */
     _errors: {
-        [key: string]: unknown;
+        [key: string]: any;
     } = {};
 
     /** Whether the control is disabled */

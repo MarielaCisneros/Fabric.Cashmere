@@ -127,10 +127,10 @@ export class PicklistOldComponent implements ControlValueAccessor {
     public onTouched: any = () => {
         // do nothing.
     };
-    public registerOnChange(fn: unknown): void {
+    public registerOnChange(fn: any): void {
         this.onChange = fn;
     }
-    public registerOnTouched(fn: unknown): void {
+    public registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
     public writeValue(value: IPicklistOptions | string[]): void {

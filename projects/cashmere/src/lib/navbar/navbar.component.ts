@@ -42,7 +42,7 @@ export class NavbarComponent implements OnDestroy {
 
     /** Router link triggered when home icon is clicked */
     @Input()
-    homeUri: unknown[] | string = '';
+    homeUri: any[] | string = '';
 
     /** Fixes the position of navbar to the top of the page. *Default is false.* */
     @Input()
@@ -167,7 +167,7 @@ export class NavbarComponent implements OnDestroy {
         }
     }
 
-    _menuClick(event): void {
+    _menuClick(event: any): void {
         const clickTarget: string = event.target.outerHTML;
 
         // Verify that the click in the mobile menu came from a navigation item

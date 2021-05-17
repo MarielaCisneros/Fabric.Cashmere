@@ -16,7 +16,7 @@ export class PicklistValuesetMovingService {
 
     public constructor(private filterService: PicklistFilterService, private stateService: PicklistStateService) {}
 
-    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets = false) {
+    public moveOutValuesets(optionsToMove: PicklistValueOptions, pane: PicklistPaneComponent, shouldBreakValuesets = false): void {
         this.valueSetList.selectedOptions.forEach(v => {
             v.showValues = false;
             optionsToMove.valueSets.set(v.code, v);

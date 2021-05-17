@@ -121,10 +121,10 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
 
     /** Object or value that can be passed into the popover to customize its content */
     @Input()
-    get context(): unknown {
+    get context(): any {
         return this._anchoring._context;
     }
-    set context(val: unknown) {
+    set context(val: any) {
         this._anchoring._context = val;
     }
 
@@ -159,7 +159,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     @Output() popoverOpened = new EventEmitter<void>();
 
     /** Emits when the popover is closed. */
-    @Output() popoverClosed = new EventEmitter<unknown>();
+    @Output() popoverClosed = new EventEmitter<any>();
 
     /** Instance of notification service. Will be undefined until attached to a popover. */
     _notifications: PopoverNotificationService;
@@ -262,9 +262,9 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
         }, this.popoverDelay);
     }
 
-    @HostListener('touchend', ['$event'])
-    @HostListener('touchcancel', ['$event'])
-    @HostListener('mouseleave', ['$event'])
+    @HostListener('touchend')
+    @HostListener('touchcancel')
+    @HostListener('mouseleave')
     _hideOnLeave(): void {
         if (this.trigger !== 'hover') {
             return;
@@ -313,7 +313,7 @@ export class HcPopoverAnchorDirective implements OnInit, AfterContentInit, OnDes
     }
 
     /** Closes the popover. */
-    closePopover(value?: unknown, neighborSubMenusAreOpen = false): void {
+    closePopover(value?: any, neighborSubMenusAreOpen = false): void {
         clearTimeout(this.hoverInterval);
         this._anchoring.closePopover(value, neighborSubMenusAreOpen);
     }

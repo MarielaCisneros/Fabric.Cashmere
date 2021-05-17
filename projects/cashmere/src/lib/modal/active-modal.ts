@@ -1,4 +1,4 @@
-export class ActiveModal<T = unknown, U = unknown> {
+export class ActiveModal<T = any, U = any> {
     /** Data that was passed in through ModalOptions */
     public data?: T;
     /** Closes the modal with an optional result.

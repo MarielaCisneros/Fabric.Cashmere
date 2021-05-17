@@ -3,7 +3,7 @@ import {FilterableSelectList, SelectListOption} from '../pane/picklist-pane.mode
 
 @Injectable()
 export class PicklistFilterLocalService {
-    public filter<T extends SelectListOption>(list: FilterableSelectList<T>, searchTokens: string[]) {
+    public filter<T extends SelectListOption>(list: FilterableSelectList<T>, searchTokens: string[]): void {
         list.filteredOptions = [];
         list.options.forEach(item => {
             if (this.itemHasSearchTokens(list, item, searchTokens)) {

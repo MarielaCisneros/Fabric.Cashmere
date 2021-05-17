@@ -47,7 +47,7 @@ export class ModalWindowComponent {
     }
 
     @HostListener('mousedown', ['$event'])
-    _overlayClick(event: unknown): void {
+    _overlayClick(event: any): void {
         let modalContentNotPresent = true;
         const path = this._eventPath(event);
         const modalWindowTargetIncluded = path.findIndex(p => p === this.el.nativeElement) > -1;

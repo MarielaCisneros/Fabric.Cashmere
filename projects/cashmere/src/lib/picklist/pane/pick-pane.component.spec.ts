@@ -960,7 +960,7 @@ class HcPickPaneGroupingTestCmp {
     ];
 
     groupByFn = (item) => item.child.name;
-    groupValueFn = (key) => ({ group: key });
+    groupValueFn = (key, _) => ({ group: key });
 }
 
 function triggerKeyDownEvent(
