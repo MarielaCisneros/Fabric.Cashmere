@@ -45,7 +45,9 @@ class TestComponent {
     updateRange(range: DateRange) {
         this.range = range;
     }
-    updatePreset(index: number|DateRange) {}
+    updatePreset(index: number|DateRange) {
+        // do nothing.
+    }
 }
 
 describe('DateRangeDirective', () => {

@@ -3,7 +3,7 @@ import {Overlay, OverlayContainer} from '@angular/cdk/overlay';
 import {ScrollDispatcher} from '@angular/cdk/scrolling';
 
 import {Component, FactoryProvider, Type, ValueProvider, ViewChild} from '@angular/core';
-import {ComponentFixture, fakeAsync, flush, inject, TestBed, tick} from '@angular/core/testing';
+import {ComponentFixture, fakeAsync, flush, inject, TestBed} from '@angular/core/testing';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {By} from '@angular/platform-browser';
 import {BrowserDynamicTestingModule} from '@angular/platform-browser-dynamic/testing';
@@ -82,7 +82,9 @@ class DatepickerWithStartViewYear {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onYearSelection() {}
+    onYearSelection() {
+        // do nothing.
+    }
 }
 
 @Component({
@@ -96,7 +98,9 @@ class DatepickerWithStartViewMultiYear {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onMultiYearSelection() {}
+    onMultiYearSelection() {
+        // do nothing.
+    }
 }
 
 @Component({
@@ -209,13 +213,21 @@ class DatepickerWithChangeAndInputEvents {
     @ViewChild('d')
     datepicker: DatepickerComponent;
 
-    onChange() {}
+    onChange() {
+        // do nothing.
+    }
 
-    onInput() {}
+    onInput() {
+        // do nothing.
+    }
 
-    onDateChange() {}
+    onDateChange() {
+        // do nothing.
+    }
 
-    onDateInput() {}
+    onDateInput() {
+        // do nothing.
+    }
 }
 
 @Component({

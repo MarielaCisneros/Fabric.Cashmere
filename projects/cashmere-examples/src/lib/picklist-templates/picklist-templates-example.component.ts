@@ -19,14 +19,14 @@ export class PicklistTemplatesExampleComponent {
         {name: 'Sled', icon: 'snowflake-o', color: 'purple', type: null }
     ];
 
-    groupByFn = (item) => item.type;
+    groupByFn = (item): void => item.type;
 
-    customSearchFn(term: string, item: any) {
+    customSearchFn(term: string, item: any): boolean {
         term = term?.toLowerCase();
         return item.name?.toLowerCase().indexOf(term) > -1 || item.type?.toLowerCase().indexOf(term) > -1;
     }
 
-    sortFn(a: any, b: any) {
+    sortFn(a: any, b: any): void {
         return a.label.localeCompare(b.label);
     }
 }

@@ -239,7 +239,7 @@ export class DatepickerComponent implements OnDestroy {
         this._scrollStrategy = scrollStrategy;
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.close();
         this._inputSubscription.unsubscribe();
         this._disabledChange.complete();

@@ -1,6 +1,5 @@
 import {
     Component,
-    OnInit,
     ViewEncapsulation,
     ChangeDetectionStrategy,
     OnChanges,
@@ -106,7 +105,7 @@ export class CalendarBodyComponent implements OnChanges {
         }
     }
 
-    ngOnChanges(changes: SimpleChanges) {
+    ngOnChanges(changes: SimpleChanges): void {
         const columnChanges = changes.numCols;
         const {rows, numCols} = this;
 
@@ -135,7 +134,7 @@ export class CalendarBodyComponent implements OnChanges {
     }
 
     /** Focuses the active cell after the microtask queue is empty. */
-    _focusActiveCell() {
+    _focusActiveCell(): void {
         this._ngZone.runOutsideAngular(() => {
             this._ngZone.onStable
                 .asObservable()

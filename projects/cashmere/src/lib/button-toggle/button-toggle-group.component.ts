@@ -95,7 +95,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     get multiple(): boolean {
         return this._multiple;
     }
-    set multiple(val) {
+    set multiple(val: boolean) {
         this._multiple = parseBooleanAttribute(val);
     }
 
@@ -104,7 +104,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     get valueRequired(): boolean {
         return this._valueRequired;
     }
-    set valueRequired(required) {
+    set valueRequired(required: boolean) {
         this._valueRequired = parseBooleanAttribute(required);
     }
 
@@ -114,7 +114,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         return this._disabled;
     }
 
-    set disabled(isDisabled) {
+    set disabled(isDisabled: boolean) {
         this._disabled = parseBooleanAttribute(isDisabled);
         if (this._buttons) {
             this._buttons.forEach((button: ButtonToggleComponent) => button._parentDisabled = this._disabled);
@@ -122,10 +122,14 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this._updateButtonStyle();
     }
 
-    private _onChangeFn: (value: any) => void = () => {};
-    private _onTouchFn: () => any = () => {};
+    private _onChangeFn: (value: any) => void = () => {
+        // do nothing.
+    };
+    private _onTouchFn: () => any = () => {
+        // do nothing.
+    };
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         this._connectToButtonChildren();
         setTimeout(() => {
             this._setInitalModelAsNeeded();
@@ -135,7 +139,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.unsubscribe$.next();
         this.unsubscribe$.complete();
     }
@@ -157,13 +161,13 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this.disabled = state;
     }
 
-    _touch() {
+    _touch(): void {
         if (this._onTouchFn) {
             this._onTouchFn();
         }
     }
 
-    _updateButtonStyle() {
+    _updateButtonStyle(): void {
         if (this._buttons) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 const checkedClass = button.selected ? 'hc-toggle-checked' : '';
@@ -174,7 +178,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         }
     }
 
-    _updateButtonStateFromModel() {
+    _updateButtonStateFromModel(): void {
         this._buttons?.forEach((button: ButtonToggleComponent) => {
             if (this.multiple) {
                 button._selected = this._value?.some(v => v === button.value);
@@ -190,7 +194,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
         this._updateButtonStyle();
     }
 
-    _updateValueOnClick(targetButton: ButtonToggleComponent) {
+    _updateValueOnClick(targetButton: ButtonToggleComponent): void {
         if (!this.multiple) {
             this._buttons.forEach((button: ButtonToggleComponent) => {
                 if (button !== targetButton) {

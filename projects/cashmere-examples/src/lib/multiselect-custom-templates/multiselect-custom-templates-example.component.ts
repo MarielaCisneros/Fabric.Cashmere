@@ -20,7 +20,7 @@ export class MultiselectCustomTemplatesExampleComponent {
         {name: 'Space Shuttle', icon: 'space-shuttle', color: 'dark-blue', type: 'air'}
     ];
 
-    customSearchFn(term: string, item: any) {
+    customSearchFn(term: string, item: any): boolean {
         term = term.toLowerCase();
         return item.name.toLowerCase().indexOf(term) > -1 || item.type.toLowerCase().indexOf(term) > -1;
     }

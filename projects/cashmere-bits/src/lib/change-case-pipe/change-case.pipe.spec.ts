@@ -12,7 +12,7 @@ describe('ChangeCasePipe', () => {
 
     describe('when provided a valid case parameter', () => {
         it('(pascalCase) should transform the input to PascalCase', () => {
-            const result = pipe.transform('hello world', 'pascalCase');
+            // const result = pipe.transform('hello world', 'pascalCase');
             expect(changeCaseLib.pascalCase).toHaveBeenCalled();
         });
     });

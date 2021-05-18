@@ -1,6 +1,6 @@
 // https://github.com/mgechev/codelyzer/issues/178#issuecomment-265154480
 
-import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, HostListener, Renderer2, ViewEncapsulation} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Renderer2, ViewEncapsulation} from '@angular/core';
 import {ButtonComponent} from './button.component';
 
 /* Cashmere button styled anchor */

@@ -14,7 +14,7 @@ export class ModalOverviewExampleComponent {
 
     constructor(private modalService: ModalService) {}
 
-    open() {
+    open(): void {
         const options: ModalOptions = {
             data:
                 'This is a size lg modal with isDraggable set to true. It places a drag handle in the top right corner which you can use to reposition the modal.',
@@ -27,7 +27,7 @@ export class ModalOverviewExampleComponent {
         subModal.result.subscribe(res => (this.result = res));
     }
 
-    openTemplate(content: TemplateRef<any>) {
+    openTemplate(content: TemplateRef<any>): void {
         const options: ModalOptions = {
             data: 'I got this data from the class that opened me (Template version)'
         };

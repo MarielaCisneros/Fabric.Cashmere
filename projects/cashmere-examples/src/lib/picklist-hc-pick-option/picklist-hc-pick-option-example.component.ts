@@ -18,7 +18,7 @@ export class PicklistHcPickOptionExampleComponent {
         { id: 8, name: 'Cucumber', disabled: true }
     ];
 
-    toggleDisabled() {
+    toggleDisabled(): void {
         const veg: any = this.veggies[7];
         veg.disabled = !veg.disabled;
     }

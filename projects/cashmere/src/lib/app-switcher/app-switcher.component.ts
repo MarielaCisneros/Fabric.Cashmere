@@ -52,16 +52,16 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
     }
     constructor(@Inject(APP_SWITCHER_SERVICE) public appSwitcherService: IAppSwitcherService, private workTracker: WorkTrackerService) {}
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.loadApplications();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.ngUnsubscribe.next();
         this.ngUnsubscribe.complete();
     }
 
-    public loadApplications() {
+    public loadApplications(): void {
         try {
             this.loadApplicationFromDiscoveryService();
         } catch (error) {
@@ -95,7 +95,7 @@ export class AppSwitcherComponent implements OnInit, OnDestroy {
         return this.appIsMe(app) ? null : app.ServiceUrl;
     }
 
-    appIsMe(app: IDiscoveryApplication) {
+    appIsMe(app: IDiscoveryApplication): boolean {
         return app.ServiceName === this.serviceName && `${app.Version}` === this.serviceVersion;
     }
 }

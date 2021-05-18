@@ -17,7 +17,9 @@ import {parseBooleanAttribute} from '../../util';
 export class ChipRowComponent {
     private _wrap = true;
 
-    constructor() {}
+    constructor() {
+        // do nothing.
+    }
 
     /** If false, constrain the container to one line with overflow ellipses (default=true) */
     @Input()
@@ -25,7 +27,7 @@ export class ChipRowComponent {
         return this._wrap;
     }
 
-    set wrap(doWrap) {
+    set wrap(doWrap: boolean) {
         this._wrap = parseBooleanAttribute(doWrap);
     }
 }

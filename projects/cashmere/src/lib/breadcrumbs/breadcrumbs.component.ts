@@ -43,8 +43,8 @@ export class BreadcrumbsComponent implements OnInit, OnDestroy {
 
     constructor(private activatedRoute: ActivatedRoute, private router: Router) {}
 
-    ngOnInit() {
-        const ROUTE_DATA_BREADCRUMB = 'breadcrumb';
+    ngOnInit(): void {
+        // const ROUTE_DATA_BREADCRUMB = 'breadcrumb';
         // Add the first breadcrumb for the base page
         const root: ActivatedRoute = this.activatedRoute.root;
         this._breadcrumbs = this.getBreadcrumbs(root);

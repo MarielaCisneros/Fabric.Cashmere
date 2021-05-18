@@ -182,11 +182,17 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     /** Emits when the disabled state has changed */
     _disabledChange = new EventEmitter<boolean>();
 
-    _onTouched = () => {};
+    _onTouched = (): void => {
+        // do nothing.
+    };
 
-    private _cvaOnChange: (value: any) => void = () => {};
+    private _cvaOnChange: (value: any) => void = () => {
+        // do nothing.
+    };
 
-    private _validatorOnChange = () => {};
+    private _validatorOnChange = () => {
+        // do nothing.
+    };
 
     private _datepickerSubscription = Subscription.EMPTY;
 
@@ -254,7 +260,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         });
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._datepickerSubscription.unsubscribe();
         this._localeSubscription.unsubscribe();
         this._valueChange.complete();
@@ -305,7 +311,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
     }
 
     // Set the date programmatically
-    setDate(selected: D) {
+    setDate(selected: D): void {
         this.value = selected;
         this._cvaOnChange(selected);
         this._onTouched();
@@ -313,7 +319,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         this.dateChange.emit(new HcDatepickerInputEvent(this, this._elementRef.nativeElement));
     }
 
-    _onKeydown(event: KeyboardEvent) {
+    _onKeydown(event: KeyboardEvent): void {
         const isAltDownArrow = event.altKey && event.key === 'ArrowDown';
 
         if (this._datepicker && isAltDownArrow && !this._elementRef.nativeElement.readOnly) {
@@ -322,7 +328,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         }
     }
 
-    _onInput(value: string) {
+    _onInput(value: string): void {
         // Add stored date value to a time-only input for javascript date object parsing
         const pickerMode = this._datepicker ? this._datepicker.mode : this._mode;
         if ( pickerMode === 'time' ) {
@@ -358,12 +364,12 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
         }
     }
 
-    _onChange() {
+    _onChange(): void {
         this.dateChange.emit(new HcDatepickerInputEvent(this, this._elementRef.nativeElement));
     }
 
     /** Handles blur events on the input. */
-    _onBlur() {
+    _onBlur(): void {
         // Reformat the input only if we have a valid value.
         if (this.value || this._elementRef.nativeElement.value) {
             this._formatValue(this.value);

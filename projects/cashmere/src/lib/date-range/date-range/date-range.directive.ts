@@ -41,9 +41,11 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
         });
     }
 
-    ngOnInit() {}
+    ngOnInit(): void {
+        // do nothing.
+    }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         if (this._overlayRef) {
             this._overlayRef.detach();
         }
@@ -66,7 +68,7 @@ export class DateRangeDirective implements OnInit, OnDestroy, OnChanges {
     }
 
     @HostListener('click')
-    _onClick() {
-        this._overlayRef = this.calendarOverlayService.open(this._elementRef, this.options.center!);
+    _onClick(): void {
+        this._overlayRef = this.calendarOverlayService.open(this._elementRef, !this.options.center);
     }
 }

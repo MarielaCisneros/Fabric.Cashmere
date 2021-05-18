@@ -9,7 +9,11 @@ import {FormControl} from '@angular/forms';
 export class DatepickerSugarExampleComponent implements OnInit {
     readonly dateControl = new FormControl(new Date(2020, 1, 1));
 
-    constructor() {}
+    constructor() {
+        // do nothing.
+    }
 
-    ngOnInit() {}
+    ngOnInit(): void {
+        // do nothing.
+    }
 }
