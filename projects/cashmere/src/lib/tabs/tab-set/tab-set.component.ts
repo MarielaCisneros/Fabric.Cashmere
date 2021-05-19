@@ -11,14 +11,14 @@ export class TabChangeEvent {
     constructor(public index: number, public tab: TabComponent) {}
 }
 
-export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]) {
+export function throwErrorForMissingRouterLink(tabsWithoutRouterLink: TabComponent[]): void {
     const tabTitles = tabsWithoutRouterLink.map(tab => tab.tabTitle);
     throw Error(`Routerlink missing on ${tabTitles.join(',')}`);
 }
 
 const supportedDirections = ['horizontal', 'vertical'];
 
-export function validateDirectionInput(inputStr: string) {
+export function validateDirectionInput(inputStr: string): void {
     if (supportedDirections.indexOf(inputStr) < 0) {
         throw Error('Unsupported tab direction value: ' + inputStr);
     }
@@ -28,7 +28,7 @@ export function tabComponentMissing(): Error {
     return new Error(`TabSet must contain at least one TabComponent. Make sure to add a hc-tab to the hc-tab-set element.`);
 }
 
-export function invalidDefaultTab(tabVal: string | number) {
+export function invalidDefaultTab(tabVal: string | number): void {
     throw Error('Invalid default tab value: ' + tabVal + ". Must be 'none' or a value less than the total number of tabs in the set.");
 }
 
@@ -90,7 +90,7 @@ export class TabSetComponent implements AfterContentInit {
         return this._addContentContainer;
     }
 
-    set addContentContainer(value) {
+    set addContentContainer(value: boolean) {
         this._addContentContainer = parseBooleanAttribute(value);
     }
 
@@ -101,7 +101,7 @@ export class TabSetComponent implements AfterContentInit {
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
         this.setTabDirection();
     }
@@ -142,12 +142,12 @@ export class TabSetComponent implements AfterContentInit {
     }
 
     /** Sets the currently selected tab by either its numerical index or `TabComponent` object  */
-    selectTab(tab: number | TabComponent) {
+    selectTab(tab: number | TabComponent): void {
         const activeTab = typeof tab === 'number' ? this._tabs.toArray()[tab] : tab;
         this._setActive(activeTab);
     }
 
-    _setActive(tab: TabComponent) {
+    _setActive(tab: TabComponent): void {
         let activeIndex = 0;
         this._tabs.toArray().forEach((t, index) => {
             t._active = false;

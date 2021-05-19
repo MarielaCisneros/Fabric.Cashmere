@@ -63,7 +63,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return this._isDisabled;
     }
 
-    set disabled(disabledVal) {
+    set disabled(disabledVal: boolean) {
         this._isDisabled = parseBooleanAttribute(disabledVal);
     }
 
@@ -73,7 +73,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         return this._isRequired;
     }
 
-    set required(requiredVal) {
+    set required(requiredVal: boolean) {
         this._isRequired = parseBooleanAttribute(requiredVal);
     }
 
@@ -89,7 +89,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
 
     /** Get or set the value of the select component */
     @Input()
-    get value() {
+    get value(): any {
         return this._value;
     }
 
@@ -105,7 +105,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     get tight(): boolean {
         return this._tight;
     }
-    set tight(value) {
+    set tight(value: boolean) {
         this._tight = parseBooleanAttribute(value);
     }
 
@@ -122,7 +122,7 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
     _hostClass = true;
 
     @HostBinding('class.hc-select-disabled')
-    get _disabledClass() {
+    get _disabledClass(): boolean {
         if (this._ngControl && this._ngControl.disabled) {
             return this._ngControl.disabled;
         }
@@ -157,39 +157,43 @@ export class SelectComponent extends HcFormControlComponent implements ControlVa
         }
     }
 
-    private onChange: (val: any) => void = () => {};
+    private onChange: (val: any) => void = () => {
+        // do nothing.
+    };
 
-    private onTouched: (val: any) => void = () => {};
+    private onTouched: (val: any) => void = () => {
+        // do nothing
+    };
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this._applyValueToNativeControl();
     }
 
-    registerOnChange(fn: any) {
+    registerOnChange(fn: any): void {
         this.onChange = fn;
     }
 
-    registerOnTouched(fn: any) {
+    registerOnTouched(fn: any): void {
         this.onTouched = fn;
     }
 
-    writeValue(value: any) {
+    writeValue(value: any): void {
         this._value = value;
         this._applyValueToNativeControl();
     }
 
-    _applyValueToNativeControl() {
+    _applyValueToNativeControl(): void {
         const id: string|null = this._getOptionId(this._value);
         if (!this._nativeSelect) { return; }
         if (id == null) {
-            const selectedIndex = this.placeholder ? 0 : -1;
+            // const selectedIndex = this.placeholder ? 0 : -1;
             this._renderer.setProperty(this._nativeSelect.nativeElement, 'selectedIndex', -1);
         }
         const valueString = _buildValueString(id, this._value);
         this._renderer.setProperty(this._nativeSelect.nativeElement, 'value', valueString);
     }
 
-    _change(event: Event, value: any) {
+    _change(event: Event, value: any): void {
         event.stopPropagation();
         this._value = this._getOptionValue(value);
         this.onChange(this._value);

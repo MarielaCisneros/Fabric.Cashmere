@@ -37,7 +37,7 @@ export class PickOption {
         Object.assign(this, config);
     }
 
-    toggleOpenState(event: MouseEvent) {
+    toggleOpenState(event: MouseEvent): void {
         event.stopPropagation();
         this.isClosed = !this.isClosed;
     }

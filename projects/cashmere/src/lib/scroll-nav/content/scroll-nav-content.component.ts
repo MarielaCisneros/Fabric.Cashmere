@@ -107,7 +107,7 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
         }
     }
 
-    @HostListener('window:resize') _onWindowResize() {
+    @HostListener('window:resize') _onWindowResize(): void {
         if (this.makeLastTargetFullHeight) {
             this.minHeightForLastTargetSet = false;
         }
@@ -144,18 +144,18 @@ export class HcScrollNavContentComponent implements AfterViewInit, AfterViewChec
     }
 
     /** Scroll to top and reset the 'automatic full height for the last item' setting. */
-    public refresh() {
+    public refresh(): void {
         this.scrollToTop();
         this.minHeightForLastTargetSet = false;
     }
 
     /** Helper function to scroll to the top of the content area. */
-    public scrollToTop() {
+    public scrollToTop(): void {
         this._cdkScrollableElement.scrollTo({top: 0});
     }
 
     /** Will update the navigation state. */
-    public checkActiveSection() {
+    public checkActiveSection(): void {
         if (this._scrollTargets.length > 0) {
             const offset: number = this._cdkScrollableElement.measureScrollOffset('top') + this._scrollTargets[0].offsetTop;
 

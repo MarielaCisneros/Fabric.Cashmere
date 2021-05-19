@@ -82,8 +82,8 @@ describe('HcFormFieldComponent', () => {
     });
 
     describe('with forms', () => {
-        let inputElement: HTMLInputElement;
-        let labelElement: HTMLLabelElement;
+        // let inputElement: HTMLInputElement;
+        // let labelElement: HTMLLabelElement;
         let formFieldDebugElement: DebugElement;
         let testComponent: InputWithFormControl;
 
@@ -92,8 +92,8 @@ describe('HcFormFieldComponent', () => {
             fixture.detectChanges();
 
             testComponent = fixture.debugElement.componentInstance;
-            inputElement = fixture.debugElement.query(By.css('input')).nativeElement;
-            labelElement = fixture.debugElement.query(By.css('label')).nativeElement;
+            // inputElement = fixture.debugElement.query(By.css('input')).nativeElement;
+            // labelElement = fixture.debugElement.query(By.css('label')).nativeElement;
             formFieldDebugElement = fixture.debugElement.query(By.directive(HcFormFieldComponent));
         });
 

@@ -30,8 +30,12 @@ export class SingleRadioComponent {
     radioId: string | null = 'simple-radio';
     radioValue = 'single_radio';
 
-    onRadioClick: (event?: Event) => void = () => {};
-    onRadioChange: (event?: RadioButtonChangeEvent) => void = () => {};
+    onRadioClick: (event?: Event) => void = () => {
+        // do nothing.
+    };
+    onRadioChange: (event?: RadioButtonChangeEvent) => void = () => {
+        // do nothing.
+    };
 }
 
 describe('RadioButtonComponent', () => {

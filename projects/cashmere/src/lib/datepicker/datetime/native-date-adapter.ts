@@ -355,11 +355,11 @@ export class NativeDateAdapter extends DateAdapter<Date> {
         return super.deserialize(value);
     }
 
-    isDateInstance(obj: any) {
+    isDateInstance(obj: any): boolean {
         return obj instanceof Date;
     }
 
-    isValid(date: Date) {
+    isValid(date: Date): boolean {
         return !isNaN(date.getTime());
     }
 

@@ -54,8 +54,12 @@ export class RadioGroupDirective extends HcFormControlComponent implements Contr
 
     _componentId = this._name;
 
-    _onChangeFn: (value: any) => void = () => {};
-    _onTouchFn: () => any = () => {};
+    _onChangeFn: (value: any) => void = () => {
+        // do nothing.
+    };
+    _onTouchFn: () => any = () => {
+        // do nothing.
+    };
 
     /** Name of radio group. Auto-generated name will be used if no name is set */
     @Input()

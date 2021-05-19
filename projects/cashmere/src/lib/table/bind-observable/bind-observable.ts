@@ -120,7 +120,7 @@ function redefineAccessorProperty(
  * but will not emit undefined if undefined is not explicitly assigned on initialization.
  */
 export function BindObservable(observableKeyOrOpts?: string | BindObservableOpts) {
-    return (target: any, propertyKey: string) => {
+    return (target: any, propertyKey: string): void => {
         const opts: BindObservableOpts = isBindObservableOpts(observableKeyOrOpts) ? observableKeyOrOpts : {};
 
         if (typeof observableKeyOrOpts === 'string') {

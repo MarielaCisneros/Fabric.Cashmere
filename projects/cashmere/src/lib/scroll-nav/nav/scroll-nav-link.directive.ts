@@ -40,13 +40,13 @@ export class ScrollNavLinkDirective {
         });
     }
 
-    @HostListener('keydown.enter') _onEnter() {
+    @HostListener('keydown.enter') _onEnter(): void {
         if (this.hcScrollLink) {
             this.navigateToSection(this.hcScrollLink);
         }
     }
 
-    @HostListener('click') _onClick() {
+    @HostListener('click') _onClick(): void {
         if (this.hcScrollLink) {
             this.navigateToSection(this.hcScrollLink);
         }

@@ -18,5 +18,7 @@ export class SubnavComponent {
     @Input()
     public fixedTop = false;
 
-    constructor() {}
+    constructor() {
+        // do nothing.
+    }
 }

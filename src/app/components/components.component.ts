@@ -35,7 +35,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
                 if (!category) {
                     category = this.categorizedDocItems.find(c => c.category === 'misc');
                 }
-                category!.items!.push(item);
+                category?.items?.push(item);
             });
         }
     }
@@ -52,7 +52,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
         this.appInsights = new ApplicationInsightsService();
     }
 
-    ngOnInit() {
+    ngOnInit(): void {
         const docType$ = this.activatedRoute.data.pipe(tap(data => (this.docType = data.docType)));
         const id$ = this.activatedRoute.paramMap.pipe(
             map(paramMap => paramMap.get('id') as string),
@@ -64,7 +64,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
             .subscribe(() => this.loadDocs());
     }
 
-    loadDocs() {
+    loadDocs(): void {
         if (!this.docType) {
             return;
         }
@@ -83,7 +83,7 @@ export class ComponentsComponent implements OnInit, OnDestroy {
     }
 
     // Handle nav changes via the sidebar or mobile dropdown
-    navUpdate(id: string) {
+    navUpdate(id: string): void {
         this.router.navigate([`/web/${this.docType}/` + id]);
         window.scrollTo(0, 0);
     }

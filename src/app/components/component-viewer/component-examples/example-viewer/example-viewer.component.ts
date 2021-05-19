@@ -42,7 +42,7 @@ export class ExampleViewerComponent implements OnInit {
     }
 
     @Input()
-    get example() {
+    get example(): string {
         return this._example;
     }
     set example(example: string) {
@@ -52,7 +52,7 @@ export class ExampleViewerComponent implements OnInit {
         }
     }
 
-    get exampleTitle() {
+    get exampleTitle(): string {
         return titleCase(this._example);
     }
 
@@ -79,7 +79,7 @@ export class ExampleViewerComponent implements OnInit {
         }
     }
 
-    getTabTitle(fileName: string) {
+    getTabTitle(fileName: string) : string{
         switch (fileName) {
             case 'example.component.ts':
                 return 'TS';
@@ -98,7 +98,7 @@ export class ExampleViewerComponent implements OnInit {
         return fileName;
     }
 
-    logClick(tab: string) {
+    logClick(tab: string): void {
         this.appInsights.logEvent(this._example, tab);
     }
 

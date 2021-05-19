@@ -36,29 +36,29 @@ export class HcToastComponent {
     _progressWidth = '100%';
     readonly _componentInstance = new BehaviorSubject<any>(null);
 
-    get _widthStr() {
+    get _widthStr(): string {
         return this._width ? `${this._width}px` : 'auto';
     }
 
     constructor(public _el: ElementRef, public _viewContainerRef: ViewContainerRef, public _changeRef: ChangeDetectorRef) {}
 
-    _onAnimationStart(event: AnimationEvent) {
+    _onAnimationStart(event: AnimationEvent): void {
         this._animationStateChanged.emit(event);
     }
 
-    _onAnimationDone(event: AnimationEvent) {
+    _onAnimationDone(event: AnimationEvent): void {
         this._animationStateChanged.emit(event);
     }
 
-    _startExitAnimation() {
+    _startExitAnimation(): void {
         this._animationState = 'leave';
     }
 
-    _dismissClick(event: MouseEvent) {
+    _dismissClick(event: MouseEvent): void {
         this._closeClick.emit(event);
     }
 
-    _customComponentAttached(ref: CdkPortalOutletAttachedRef) {
+    _customComponentAttached(ref: CdkPortalOutletAttachedRef): void {
         if (ref instanceof ComponentRef) {
             this._componentInstance.next(ref.instance);
         }
