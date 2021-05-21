@@ -19,7 +19,7 @@ export class PicklistHcPickOptionExampleComponent {
     ];
 
     toggleDisabled(): void {
-        const veg: any = this.veggies[7];
+        const veg = this.veggies[7];
         veg.disabled = !veg.disabled;
     }
 }

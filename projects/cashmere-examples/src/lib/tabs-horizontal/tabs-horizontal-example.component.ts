@@ -16,7 +16,7 @@ export class TabsHorizontalExampleComponent {
         this.selectedIndex = event.index;
     }
 
-    addTask(event: Event): void {
+    addTask(): void {
         window.alert('The "Add Task" tab was clicked.');
     }
 }

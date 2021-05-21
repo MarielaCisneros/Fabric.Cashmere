@@ -49,17 +49,17 @@ export class TabComponent implements AfterContentInit {
     @ContentChildren(HcTabTitleComponent)
     _tabTitle: QueryList<HcTabTitleComponent>;
 
-    ngAfterContentInit() {
+    ngAfterContentInit(): void {
         if (this._tabTitle) {
             this._htmlTitle = this._tabTitle.first;
         }
     }
 
-    @HostListener('keydown.enter', ['$event']) _onEnter($event) {
+    @HostListener('keydown.enter', ['$event']) _onEnter($event: Event): void {
         this.tabClickHandler($event);
     }
 
-    tabClickHandler(event: Event) {
+    tabClickHandler(event: Event): void {
         // Prevent a tab anchor click from also calling the router on the host element
         event.preventDefault();
         event.stopPropagation();

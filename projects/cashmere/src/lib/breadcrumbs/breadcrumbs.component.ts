@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit, Input, ViewEncapsulation} from '@angular/core';
 import {ActivatedRoute, Event, NavigationEnd, Params, PRIMARY_OUTLET, Router} from '@angular/router';
+import { Subscription} from 'rxjs';
 
 /**
  * IBreadcrumb interface is used to store all required data for each breadcrumb element
@@ -25,7 +26,7 @@ export type QueryParamsHandling = 'merge' | 'preserve' | '';
 })
 export class BreadcrumbsComponent implements OnInit, OnDestroy {
     public _breadcrumbs: IBreadcrumb[] = [];
-    public _routerSubscription: any;
+    public _routerSubscription: Subscription;
     _backURL = '';
     _backShow = 'none';
     _locationLabel = '';

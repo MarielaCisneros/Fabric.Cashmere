@@ -380,7 +380,7 @@ export class DatepickerInputDirective implements ControlValueAccessor, OnDestroy
 
     /** Formats a value and sets it on the input element. */
     private _formatValue(value: D | null) {
-        let dateFormat: any = this._dateFormats.display.dateInput;
+        let dateFormat = this._dateFormats.display.dateInput;
         let tempMode = 'date';
         let tempCycle = 12;
 

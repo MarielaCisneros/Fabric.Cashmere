@@ -46,7 +46,7 @@ export function isFunction(value: any): boolean {
 }
 
 /* Open Source `take-until-destroy` operator from: https://github.com/NetanelBasal/ngx-take-until-destroy */
-export const untilDestroyed = (componentInstance, destroyMethodName = 'ngOnDestroy') => <T>(source: Observable<T>) => {
+export const untilDestroyed = (componentInstance: any, destroyMethodName = 'ngOnDestroy') => <T>(source: Observable<T>) => {
     const originalDestroy = componentInstance[destroyMethodName];
     if (isFunction(originalDestroy) === false) {
         throw new Error(`${componentInstance.constructor.name} is using untilDestroyed but doesn't implement ${destroyMethodName}`);

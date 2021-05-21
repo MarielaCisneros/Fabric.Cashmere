@@ -67,7 +67,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     /** Group items by property or function expression. If a function is provided, must follow this signature: `((item: any) => any)`. The
      * function is passed an option and returns a value to represent the identifier for the group that option should belong to.
      * *Grouping is off by default.* */
-    @Input() groupBy: string | Function;
+    @Input() groupBy: string;
     /** Function expression to provide group value: `(key: string | object, children: any[]) => string | object`. Same as
      * described in ng-select component. https://ng-select.github.io/ng-select#/grouping */
     @Input() groupValue: GroupValueFn;
@@ -148,7 +148,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
      * The first argument is a value from an option. The second is a value from the selection (model).
      * A boolean should be returned.
      * Same as used by https://angular.io/api/forms/SelectControlValueAccessor */
-    @Input() get compareWith() { return this._compareWith; }
+    @Input() get compareWith(): CompareWithFn { return this._compareWith; }
     set compareWith(fn: CompareWithFn) {
         if (!isFunction(fn)) {
             throw Error('`compareWith` must be a function.');
@@ -178,7 +178,7 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     @ViewChild('available', { static: true }) _availablePane: PickPaneComponent;
     @ViewChild('selected', { static: true }) _selectedPane: PickPaneComponent;
     /** Getter. Returns true if readonly property is true, or if disabled attribute is present on the control. */
-    @HostBinding('class.hc-picklist-disabled') get disabled() { return this.readonly || this._disabled; }
+    @HostBinding('class.hc-picklist-disabled') get disabled(): boolean { return this.readonly || this._disabled; }
 
     /** whether or not we should escape HTML in default option templates. will be set to false if
      * using <hc-pick-option> instead of passing in an items array */
@@ -190,8 +190,12 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     private _disabled: boolean;
     private readonly _destroy$ = new Subject<void>();
     private _compareWith: CompareWithFn;
-    private _onChange = (_: any) => { };
-    private _onTouched = () => { };
+    private _onChange = (_: any) => {
+        // do nothing.
+     };
+    private _onTouched = () => {
+        // do nothing
+    };
 
     constructor(
         _elementRef: ElementRef<HTMLElement>,
@@ -201,14 +205,14 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
             this._el = _elementRef.nativeElement;
     }
 
-    ngAfterViewInit() {
+    ngAfterViewInit(): void {
         this.picklistService.reset(this._availablePane, this._selectedPane);
         if (!this._itemsAreUsed) { this._setItemsFromHcPickOptions(); this._escapeHTML = false; }
         if (isDefined(this.autoFocus)) { this._availablePane.focus(); }
         this._detectChanges();
     }
 
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this._destroy$.next();
         this._destroy$.complete();
     }
@@ -256,17 +260,17 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     }
 
     /** Move highlighted items from the left pane over to the right pane. */
-    moveLeftToRight() {
+    moveLeftToRight(): void {
         this._move(this._availablePane, this._selectedPane, true);
     }
 
     /** Move highlighted items from the right pane over to the left pane. */
-    moveRightToLeft() {
+    moveRightToLeft(): void {
         this._move(this._selectedPane, this._availablePane);
     }
 
     /** Move selected (highlighted) options from one pane to the other */
-    _move(source: PickPaneComponent, destination: PickPaneComponent, isAdding = false) {
+    _move(source: PickPaneComponent, destination: PickPaneComponent, isAdding = false): void {
         let maxLimitEnforced = false;
         let overLimitBy = 0;
         if (isAdding && this.maxSelectedItems) {
@@ -293,13 +297,13 @@ export class PicklistComponent implements OnDestroy, AfterViewInit, ControlValue
     /** Refreshes the dimensions of the virtual scroll container and the items displayed within. Helpful when using virtual scrolling and
      * the window changes such that the picklist was resized.
      */
-    public refreshScrollArea() {
+    public refreshScrollArea(): void {
         this._availablePane.refreshScrollArea();
         this._selectedPane.refreshScrollArea();
     }
 
     /** Manually trigger change detection to update the UI. */
-    _detectChanges() {
+    _detectChanges(): void {
         if (!(<any>this._cd).destroyed) {
             this._cd.detectChanges();
         }

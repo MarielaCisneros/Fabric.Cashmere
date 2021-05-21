@@ -125,7 +125,7 @@ export class ButtonToggleGroupComponent extends HcFormControlComponent implement
     private _onChangeFn: (value: any) => void = () => {
         // do nothing.
     };
-    private _onTouchFn: () => any = () => {
+    private _onTouchFn: () => void = () => {
         // do nothing.
     };
 

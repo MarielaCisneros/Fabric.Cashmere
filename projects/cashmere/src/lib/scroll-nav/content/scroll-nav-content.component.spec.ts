@@ -87,7 +87,7 @@ class TestAppReference {
 }
 
 let testApp: TestAppReference;
-let renderer: any;
+let renderer: Renderer2;
 
 const SCROLL_TARGET_ATTRIBUTE = 'hcScrollTarget';
 

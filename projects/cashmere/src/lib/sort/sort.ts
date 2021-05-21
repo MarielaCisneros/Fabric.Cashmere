@@ -84,10 +84,10 @@ export class HcSort extends Initializable implements OnChanges, OnDestroy, OnIni
     private _disableClear: boolean;
 
     @Input('hcSortDisabled')
-    get disabled(): any {
+    get disabled(): boolean {
         return this._disabled;
     }
-    set disabled(value: any) {
+    set disabled(value: boolean) {
         this._disabled = coerceBooleanProperty(value);
     }
     private _disabled = false;

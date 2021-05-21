@@ -42,12 +42,12 @@ export class PicklistOverviewExampleComponent {
     rightHeaderText = "Selected Doctors";
 
     _customItemId = 12;
-    customItemFn(term: string): number | string | any {
+    customItemFn(term: string): number | string | unknown {
         return { id: this._customItemId++, name: term, department: "Resident" };
     }
 
     toggleDisabled(): void {
-        const doc: any = this.doctors[1];
+        const doc = this.doctors[1];
         doc.disabled = !doc.disabled;
         this.doctors = [...this.doctors];
     }

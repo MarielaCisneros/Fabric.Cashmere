@@ -62,7 +62,7 @@ export class AnalyticsComponent implements OnDestroy {
     }
 
     // Handle changes to the select component and navigate
-    selectUpdate(event: any): void {
+    selectUpdate(event: string): void {
         if (this.selectOptions.length) {
             for (const entry of this.selectOptions) {
                 if (entry.data && event === entry.data.category + ' - ' + entry.data.title) {

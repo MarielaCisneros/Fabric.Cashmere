@@ -286,7 +286,7 @@ export class NativeDateAdapter extends DateAdapter<Date> {
         return value ? new Date(Date.parse(value)) : null;
     }
 
-    format(date: Date, displayFormat: Object): string {
+    format(date: Date, displayFormat: any): string {
         if (!this.isValid(date)) {
             throw Error('NativeDateAdapter: Cannot format invalid date.');
         }

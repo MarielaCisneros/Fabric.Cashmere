@@ -15,7 +15,7 @@ import {take} from 'rxjs/operators';
 /**
  * Extra CSS classes that can be associated with a calendar cell.
  */
-export type HcCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: any};
+export type HcCalendarCellCssClasses = string | string[] | Set<string> | {[key: string]: string};
 
 /**
  * An internal class that represents the data corresponding to a single calendar cell.

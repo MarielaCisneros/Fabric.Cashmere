@@ -10,7 +10,7 @@ import {ModalOverviewExampleModalComponent} from './modal-overview-example-modal
     templateUrl: 'modal-overview-example.component.html'
 })
 export class ModalOverviewExampleComponent {
-    result: any;
+    result: unknown;
 
     constructor(private modalService: ModalService) {}
 

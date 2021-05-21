@@ -358,10 +358,10 @@ describe('DatepickerComponent', () => {
 
     // Creates a test component fixture.
     function createComponent(
-        component: Type<any>,
-        imports: Type<any>[] = [],
+        component: Type<unknown>,
+        imports: Type<unknown>[] = [],
         providers: (FactoryProvider | ValueProvider)[] = [],
-        entryComponents: Type<any>[] = []
+        entryComponents: Type<CustomHeaderForDatepicker>[] = []
     ): ComponentFixture<any> {
         TestBed.configureTestingModule({
             imports: [
@@ -459,15 +459,15 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
                 flush();
 
-                const popup = document.querySelector('.cdk-overlay-pane')!;
+                const popup = document.querySelector('.cdk-overlay-pane');
                 expect(popup).not.toBeNull();
-                expect(popup.clientHeight).not.toBe(0);
+                expect(popup?.clientHeight).not.toBe(0);
 
                 testComponent.datepicker.close();
                 fixture.detectChanges();
                 flush();
 
-                expect(popup.clientHeight).toBe(0);
+                expect(popup?.clientHeight).toBe(0);
             }));
 
             it('should close the popup when pressing ESCAPE', fakeAsync(() => {
@@ -490,9 +490,9 @@ describe('DatepickerComponent', () => {
                 fixture.detectChanges();
                 flush();
 
-                const popup = document.querySelector('.cdk-overlay-pane')!;
+                const popup = document.querySelector('.cdk-overlay-pane');
                 expect(popup).toBeTruthy();
-                expect(popup.getAttribute('role')).toBe('dialog');
+                expect(popup?.getAttribute('role')).toBe('dialog');
             }));
 
             it('setting selected via click should update input and close calendar', fakeAsync(() => {
@@ -649,7 +649,7 @@ describe('DatepickerComponent', () => {
 
                 const spy = jasmine.createSpy('close event spy');
                 const subscription = testComponent.datepicker.closedStream.subscribe(spy);
-                const backdrop = document.querySelector('.cdk-overlay-backdrop')! as HTMLElement;
+                const backdrop = document.querySelector('.cdk-overlay-backdrop') as HTMLElement;
 
                 backdrop.click();
                 fixture.detectChanges();
@@ -857,11 +857,11 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
-                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell')!;
+                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell');
 
                 // When the calendar is in year view, the first cell should be for a month rather than
                 // for a date.
-                expect(firstCalendarCell.textContent!.trim()).toBe('JAN', 'Expected the calendar to be in year-view');
+                expect(firstCalendarCell?.textContent?.trim()).toBe('JAN', 'Expected the calendar to be in year-view');
             });
 
             it('should fire yearSelected when user selects calendar year in year view', fakeAsync(() => {
@@ -904,11 +904,11 @@ describe('DatepickerComponent', () => {
                 testComponent.datepicker.open();
                 fixture.detectChanges();
 
-                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell')!;
+                const firstCalendarCell = document.querySelector('.hc-calendar-body-cell');
 
                 // When the calendar is in year view, the first cell should be for a month rather than
                 // for a date.
-                expect(firstCalendarCell.textContent!.trim()).toBe('2016', 'Expected the calendar to be in multi-year-view');
+                expect(firstCalendarCell?.textContent?.trim()).toBe('2016', 'Expected the calendar to be in multi-year-view');
             });
 
             it('should fire yearSelected when user selects calendar year in multiyear view', fakeAsync(() => {
@@ -1216,10 +1216,10 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                const pane = document.querySelector('.cdk-overlay-pane')!;
+                const pane = document.querySelector('.cdk-overlay-pane');
 
                 expect(pane).toBeTruthy('Expected calendar to be open.');
-                expect(pane.contains(document.activeElement)).toBe(true, 'Expected focus to be inside the calendar.');
+                expect(pane?.contains(document.activeElement)).toBe(true, 'Expected focus to be inside the calendar.');
 
                 fixture.componentInstance.datepicker.close();
                 fixture.detectChanges();
@@ -1632,9 +1632,9 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                const overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box')!;
+                const overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box');
 
-                expect(overlay.getAttribute('dir')).toBe('rtl');
+                expect(overlay?.getAttribute('dir')).toBe('rtl');
             });
 
             it('should update the popup direction if the directionality value changes', fakeAsync(() => {
@@ -1654,9 +1654,9 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                let overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box')!;
+                let overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box');
 
-                expect(overlay.getAttribute('dir')).toBe('ltr');
+                expect(overlay?.getAttribute('dir')).toBe('ltr');
 
                 fixture.componentInstance.datepicker.close();
                 fixture.detectChanges();
@@ -1666,9 +1666,9 @@ describe('DatepickerComponent', () => {
                 fixture.componentInstance.datepicker.open();
                 fixture.detectChanges();
 
-                overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box')!;
+                overlay = document.querySelector('.cdk-overlay-connected-position-bounding-box');
 
-                expect(overlay.getAttribute('dir')).toBe('rtl');
+                expect(overlay?.getAttribute('dir')).toBe('rtl');
             }));
         });
     });
